@@ -433,7 +433,7 @@ else
 $userLookup = $($currentUser.upn)
 $newUserObject = Invoke-RestMethod -Method GET -Uri "https://graph.microsoft.com/beta/users?`$filter=startsWith(userPrincipalName,'$userLookup')" -Headers $newHeaders
 # if new user graph request is successful, set new user object
-if($newUserObject.value -ne $null)
+if($null -ne $newUserObject.value)
 {
     log "New user found in $tenant tenant."
     $newUser = @{
